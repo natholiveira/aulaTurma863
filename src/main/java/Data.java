@@ -1,12 +1,57 @@
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class Data {
 
     public static void main(String[] args) {
-        datas();
+        informacoesData();
+    }
+
+    static void informacoesData() {
+        Scanner ler = new Scanner(System.in);
+        String dataTexto = ler.next();
+
+        // Informar se é ano bissexto
+
+
+        // formatar para o formato dd/MM/yyyy HH:mm
+
+
+        // formatar para o estilo FULL
+
+
+        // Informar o dia da semana
+
+
+        // Informar o proximo mês
+
+
+        // Informar ultimo dia do ano
+
+
+        // Informar se é horário de verão em SP
+
+
+        // Informar data de 3 dias antes
+
+
+        // Informar hora daqui a 4 horas
+
+
+        // Informar se a data é anterior a data de hoje
+
+        // Formartar data pro estilo americano
+
+
+        // Pegar data do proxima segunda
+
+
+        // Data daqui há 2 meses
     }
 
     static void datas() {
@@ -96,7 +141,74 @@ public class Data {
 
         // Horário de verão
         ZoneId zoneIdSp  = ZoneId.of("America/Sao_Paulo");
-        Boolean eHorarioDeVerao = zoneIdSp.getRules().isDaylightSavings(diaHoraAtual.toInstant(ZoneOffset.UTC));
-        System.out.println("A data "+dataHoraComZona+" é horário de verão? "+eHorarioDeVerao);
+        ZonedDateTime zonedDateTimeVerao = ZonedDateTime.of(2016, 1, 10, 10,30, 10, 10, zoneIdSp);
+        ZonedDateTime dataHoraComZonaSP = ZonedDateTime.of(diaHoraAtual, zoneIdSp);
+        Boolean eHorarioDeVerao = zoneIdSp.getRules().isDaylightSavings(zonedDateTimeVerao.toInstant());
+        System.out.println("A data "+zonedDateTimeVerao+" é horário de verão? "+eHorarioDeVerao);
+
+        // Passar data para um Time Zone diferente
+        ZonedDateTime dataZonaParis = dataHoraComZonaSP.withZoneSameInstant(zoneIdParis);
+
+        System.out.println("Data com Zona em SP: "+dataHoraComZonaSP);
+        System.out.println("Data convertida para zona de Paris: "+ dataZonaParis);
+
+        // Somar data e hora
+
+        LocalDateTime dataDaqui3dias = diaHoraAtual.plusDays(3);
+        System.out.println("Data daqui há 3 dias: "+ dataDaqui3dias);
+
+        LocalDateTime dataDaqui1ano = diaHoraAtual.plusYears(1);
+        System.out.println("Data daqui há 1 ano: "+dataDaqui1ano);
+
+        LocalDateTime dataMenos2Horas = diaHoraAtual.minusHours(2);
+        System.out.println("Data e hora 2 horas antes: "+dataMenos2Horas);
+
+        // Proximo Dia
+        ZonedDateTime proximaSexta = dataHoraComZonaSP.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+        System.out.println("Próxima sexta é: "+proximaSexta);
+
+        // Validações
+        var eAntes = diaHoraAtual.isBefore(dataHoraConvertida);
+        System.out.println(diaHoraAtual + " é anterior a data "+dataHoraConvertida+"? " +eAntes);
+
+        var eDepois = diaHoraAtual.isAfter(dataHoraConvertida);
+        System.out.println(diaHoraAtual + " é posterior a data "+dataHoraConvertida+"? " +eDepois);
+
+        // Converter
+        LocalDate toLocalDate = diaHoraAtual.toLocalDate();
+        System.out.println("Data: "+toLocalDate);
+
+        LocalTime toLocalTime = diaHoraAtual.toLocalTime();
+        System.out.println("Hora: "+toLocalTime);
+
+        ZoneOffset zonaInstant = ZoneOffset.of("+02:00");
+        Instant toInstant = diaHoraAtual.toInstant(zonaInstant);
+        System.out.println("Data convertida para instant: "+toInstant);
+
+        String toString = diaHoraAtual.toString();
+        System.out.println("Data convertida para texto: "+toString);
+
+        //Periodo
+        ZonedDateTime dataInicio = ZonedDateTime.of(diaHoraAtual, zoneIdSp);
+        Period periodo = Period.ofMonths(3);
+        ZonedDateTime dataFim = dataInicio.plus(periodo);
+
+        System.out.println("Data inicio: "+dataInicio+" Data após 3 meses: "+dataFim);
+
+        // Duracao
+        LocalTime horaInicio = LocalTime.of(12, 30, 10);
+        LocalTime horaFinal = LocalTime.of(14, 30,10);
+
+        Long minutos = ChronoUnit.MINUTES.between(horaInicio, horaFinal);
+
+        Duration duracao = Duration.ofMinutes(minutos);
+
+        System.out.println("Total de minutos: "+minutos);
+        System.out.println("Duração do intervalo: "+duracao);
+
+        // Localizacao
+        Locale localizaoJapao = new Locale("ja");
+        var dataJapao = dataHoraComZona.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).withLocale(localizaoJapao));
+        System.out.println("Data Japão: "+dataJapao);
     }
 }
