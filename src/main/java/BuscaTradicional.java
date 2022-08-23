@@ -20,7 +20,7 @@ public class BuscaTradicional {
 
         animais.stream().forEach(animal -> System.out.println("epecie: "+animal.getEspecie()));
 
-        imprimir(animais, animal -> animal.podeNadar());
+        imprimir(animais, verificadorPodeNadar);
         imprimir(animais, animal -> animal.podeNadar());
     }
 
