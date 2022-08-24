@@ -20,7 +20,7 @@ public class UsoConsumer {
         //consumer.accept("Ei consumer");
 
         Consumer<Integer> consumerInteiros = valorConsumido -> {
-            var soma10 = valorConsumido + 20;
+            var soma10 = valorConsumido + 10;
             System.out.println(soma10);
         };
 

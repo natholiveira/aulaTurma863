@@ -11,7 +11,7 @@ public class UsoLambdas {
 
         System.out.println("Nomes: "+nomes);
 
-        nomes.removeIf(nome -> !nome.startsWith("J") );
+        nomes.removeIf(nome -> !nome.startsWith("J"));
         System.out.println("Nomes iniciados com J: "+nomes);
 
         nomes.add("Araci");
