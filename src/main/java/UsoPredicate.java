@@ -11,18 +11,18 @@ public class UsoPredicate {
 
         print(animais, animal -> animal.podeNadar());
 
-        List<Casa> casas = new ArrayList<>();
-        casas.add(new Casa(true, true));
-        casas.add(new Casa(true, false));
+        List<Comodo> casas = new ArrayList<>();
+        casas.add(new Comodo("cozinha", true, true));
+        casas.add(new Comodo("sala", true, false));
 
-        printCasa(casas, casa -> casa.possuiVaranda());
+        printCasa(casas, comodo -> comodo.getPossuiPiso());
 
     }
 
-    private static void printCasa(List<Casa> casas, Predicate<Casa> verificadorCasa) {
-        casas.forEach(casa -> {
-            if (verificadorCasa.test(casa)) {
-                System.out.println(casa);
+    private static void printCasa(List<Comodo> comodos, Predicate<Comodo> verificadorCasa) {
+        comodos.forEach(comodo -> {
+            if (verificadorCasa.test(comodo)) {
+                System.out.println(comodo);
             }
         });
     }
