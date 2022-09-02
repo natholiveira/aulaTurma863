@@ -1,4 +1,6 @@
-public class Animal {
+import java.io.Serializable;
+
+public class Animal implements Serializable {
 
     public String especie;
     public Boolean podeSaltar;
@@ -22,5 +24,12 @@ public class Animal {
         return especie;
     }
 
-
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "especie='" + especie + '\'' +
+                ", podeSaltar=" + podeSaltar +
+                ", podeNadar=" + podeNadar +
+                '}';
+    }
 }
