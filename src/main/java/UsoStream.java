@@ -113,6 +113,8 @@ public class UsoStream {
 
         var animaisPodemSaltar = animais.stream().filter(animal -> animal.podeSaltar()).collect(Collectors.toList());
 
+        System.out.println(animaisPodemSaltar);
+
         var valores = List.of(100.0, 40.0, 120.0, 20.0, 240.0);
         valores.stream()
                 .filter(valor -> valor>=100)

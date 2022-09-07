@@ -59,7 +59,7 @@ public class Data {
         LocalDate dataAtual = LocalDate.now();
         System.out.println("Data atual "+dataAtual);
 
-        // Pegar a data com método of
+        // Criar a data com método of
         LocalDate dataAniverMari = LocalDate.of(1995, 2, 3);
         System.out.println("Aniver da mari "+dataAniverMari);
 

@@ -24,6 +24,8 @@ public class Animal implements Serializable {
         return especie;
     }
 
+    static public Boolean PodeNadar() {return true;}
+
     @Override
     public String toString() {
         return "Animal{" +

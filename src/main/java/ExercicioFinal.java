@@ -1,3 +1,6 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class ExercicioFinal {
 
     // Criar uma classe chamada AgendamentoConsulta
@@ -6,6 +9,16 @@ public class ExercicioFinal {
         // nome do medico
         // Especialidade
         // Data e hora da consulta
+
+    public static void main(String[] args) {
+        AgendamentoConsulta agendamentoConsulta = new AgendamentoConsulta(
+                "Angela",
+                "Rafaela",
+                "cardiologista",
+                LocalDate.of(2022, 03, 12),
+                LocalTime.of(12, 30)
+        );
+    }
 
     // Criar pelo menos 5 Agendamentos de consulta
 

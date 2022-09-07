@@ -25,6 +25,17 @@ public class Comodo {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public static Boolean PossuiJanela() {return true;}
+
+    @Override
+    public String toString() {
+        return "Comodo{" +
+                "nome='" + nome + '\'' +
+                ", possuiJanela=" + possuiJanela +
+                ", possuiPiso=" + possuiPiso +
+                '}';
+    }
 }
 
 
